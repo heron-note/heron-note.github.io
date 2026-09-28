@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=DotGothic16&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  font-family: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', system-ui, sans-serif;
+  background-color: #F1EBE0; /* oat */
+  color: #2A2926; /* ink */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
+.font-display {
+  font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  letter-spacing: -0.01em;
+}
+
+.font-pixel {
+  font-family: 'DotGothic16', 'Zen Kaku Gothic New', monospace;
+  letter-spacing: 0.02em;
+}
+
+.font-mono-label {
+  font-family: 'Space Mono', 'Zen Kaku Gothic New', ui-monospace, monospace;
+  letter-spacing: 0.06em;
+}
+
+/* Vertical Japanese label */
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+/* Breathing float for the "brain" mode */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.float-slow {
+  animation: floatY 8s ease-in-out infinite;
+}
+
+/* Marquee for series titles */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 44s linear infinite;
+}
+
+/* Fade up on enter */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Per-letter rise-in for the giant title */
+@keyframes letterRise {
+  0% {
+    opacity: 0;
+    transform: translateY(110%) rotate(4deg);
+    filter: blur(6px);
+  }
+  60% { filter: blur(0); }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+.letter-rise {
+  display: inline-block;
+  opacity: 0;
+  transform-origin: 50% 100%;
+  animation: letterRise 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity, filter;
+}
+
+.letter-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+/* Outlined text used for the "quiet" line of the catch copy */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(42, 41, 38, 0.45);
+}
+
+/* Slow drift of faint stars inside the "brain" hero */
+@keyframes starDrift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-40px); }
+}
+
+.star-layer {
+  animation: starDrift 26s linear infinite alternate;
+}
+
+/* Modal fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Anti-spam honeypot — visually removed but not inline-hidden */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
